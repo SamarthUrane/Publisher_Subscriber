@@ -1,0 +1,27 @@
+[
+  {
+    "subscriberId": "user1",
+    "name": "Rushi Unde",
+    "email": "rushikeshunde999@gmail.com"
+  },
+  {
+    "subscriberId": "user2",
+    "name": "Sam Urane",
+    "email": "samarthurane3201@gmail.com"
+  },
+  {
+    "subscriberId": "user4",
+    "name": "Pratik Mane",
+    "email": "samarthurane3201@gmail.com"
+  },
+  {
+    "subscriberId": "user5",
+    "name": "Om Tekade",
+    "email": "samarthurane3201@gmail.com"
+  },
+  {
+    "subscriberId": "user6",
+    "name": "Ram Jadhav",
+    "email": "ram@gmail.com"
+  }
+]
