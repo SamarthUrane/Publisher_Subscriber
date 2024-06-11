@@ -31,11 +31,13 @@ To install and run the Publisher Subscriber Notification System, follow these st
 
 3. **Set Environment Variables::**
     Create a .env file in the root directory and define the following environment variables: (Added .env with my credentials for convenience)
+
+    Replace your_email@gmail.com and your_email_password with your Gmail credentials. Make sure to enable less secure app access in your Gmail settings.
     ```bash
     EMAIL_USER=your_email@gmail.com
     EMAIL_PASS=your_email_password
 
-    Replace your_email@gmail.com and your_email_password with your Gmail credentials. Make sure to enable less secure app access in your Gmail settings.
+
 
 
 
@@ -114,7 +116,7 @@ The server will start running at http://localhost:3000
 
 To test the functionality of the API endpoints, you can run the provided test script:
 
+This will execute a series of test cases to ensure that the application functions as expected.
+
 ```bash
 npm test
-
-This will execute a series of test cases to ensure that the application functions as expected.
