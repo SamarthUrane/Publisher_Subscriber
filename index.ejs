@@ -4,81 +4,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Publisher Subscriber Frontend</title>
 </head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.form {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form h2 {
+    text-align: center;
+}
+
+.input-field {
+    padding: 12px;
+    margin-bottom: 20px;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.response {
+    margin-top: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+</style>
 
 <body>
-    <h1>Publisher Subscriber Frontend</h1>
- 
-    <h2>Add Subscriber</h2>
-    <div id="addSubscriber">
-        <input type="text" id="subscriberId" placeholder="Subscriber ID"><br>
-        <input type="text" id="name" placeholder="Name"><br>
-        <input type="text" id="email" placeholder="Email"><br>
-        <button onclick="addSubscriber()">Add Subscriber</button>
-        <p id="addSubscriberResponse"></p>
+    <div class="container">
+        <h1>Publisher Subscriber Frontend</h1>
+        
+        <div class="section">
+            <h2>Add Subscriber</h2>
+            <div id="addSubscriber" class="form">
+                <input type="text" id="subscriberId" placeholder="Subscriber ID" class="input-field"><br>
+                <input type="text" id="name" placeholder="Name" class="input-field"><br>
+                <input type="text" id="email" placeholder="Email" class="input-field"><br>
+                <button onclick="addSubscriber()" class="btn">Add Subscriber</button>
+                <p id="addSubscriberResponse" class="response"></p>
+            </div>
+        </div>
+        <hr>
+        
+        <div class="section">
+            <h2>Delete Subscriber</h2>
+            <div id="deleteSubscriber" class="form">
+                <input type="text" id="deleteSubscriberId" placeholder="Subscriber ID" class="input-field"><br>
+                <button onclick="deleteSubscriber()" class="btn">Delete Subscriber</button>
+                <p id="deleteSubscriberResponse" class="response"></p>
+            </div>
+        </div>
+        <hr>
+        
+        <div class="section">
+            <h2>Subscribe</h2>
+            <div id="subscribe" class="form">
+                <input type="text" id="topicIdSubscribe" placeholder="Topic ID" class="input-field"><br>
+                <input type="text" id="subscriberIdSubscribe" placeholder="Subscriber ID" class="input-field"><br>
+                <button onclick="subscribe()" class="btn">Subscribe</button>
+                <p id="subscribeResponse" class="response"></p>
+            </div>
+        </div>
+        <hr>
+        
+        <div class="section">
+            <h2>Unsubscribe</h2>
+            <div id="unsubscribe" class="form">
+                <input type="text" id="topicIdUnsubscribe" placeholder="Topic ID" class="input-field"><br>
+                <input type="text" id="subscriberIdUnsubscribe" placeholder="Subscriber ID" class="input-field"><br>
+                <button onclick="unsubscribe()" class="btn">Unsubscribe</button>
+                <p id="unsubscribeResponse" class="response"></p>
+            </div>
+        </div>
+        <hr>
+        
+        <div class="section">
+            <h2>Notify</h2>
+            <div id="notify" class="form">
+                <input type="text" id="topicIdNotify" placeholder="Topic ID" class="input-field"><br>
+                <button onclick="notify()" class="btn">Notify</button>
+                <p id="notifyResponse" class="response"></p>
+            </div>
+        </div>
+        <hr>
+        
+        <div class="section">
+            <h2>Add Message</h2>
+            <div id="addMessage" class="form">
+                <input type="text" id="topicIdMessage" placeholder="Topic ID" class="input-field"><br>
+                <input type="text" id="message" placeholder="Message" class="input-field"><br>
+                <button onclick="addMessage()" class="btn">Add Message</button>
+                <p id="addMessageResponse" class="response"></p>
+            </div>
+        </div>
+        <hr>
+        
+        <div class="section">
+            <h2>Get All Messages</h2>
+            <div id="getAllMessages" class="form">
+                <input type="text" id="getAllMessagesSubscriberId" placeholder="Subscriber ID" class="input-field"><br>
+                <button onclick="getAllMessages()" class="btn">Get All Messages</button>
+                <p id="getAllMessagesResponse" class="response"></p>
+            </div>
+        </div>
+        <hr>
+        
+        <div class="section">
+            <h2>Get Messages For Topic</h2>
+            <div id="getMessagesForTopic" class="form">
+                <input type="text" id="getMessagesForTopicSubscriberId" placeholder="Subscriber ID" class="input-field"><br>
+                <input type="text" id="getMessagesForTopicTopicId" placeholder="Topic ID" class="input-field"><br>
+                <button onclick="getMessagesForTopic()" class="btn">Get Messages For Topic</button>
+                <p id="getMessagesForTopicResponse" class="response"></p>
+            </div>
+        </div>
+        <hr>
     </div>
-    <hr>
- 
-    <h2>Delete Subscriber</h2>
-    <div id="deleteSubscriber">
-        <input type="text" id="deleteSubscriberId" plac eholder="Subscriber ID"><br>
-        <button onclick="deleteSubscriber()">Delete Subscriber</button>
-        <p id="deleteSubscriberResponse"></p>
-    </div>
-    <hr>
- 
-    <h2>Subscribe</h2>
-    <div id="subscribe">
-        <input type="text" id="topicIdSubscribe" placeholder="Topic ID"><br>
-        <input type="text" id="subscriberIdSubscribe" placeholder="Subscriber ID"><br>
-        <button onclick="subscribe()">Subscribe</button>
-        <p id="subscribeResponse"></p>
-    </div>
-    <hr>
- 
-    <h2>Unsubscribe</h2>
-    <div id="unsubscribe">
-        <input type="text" id="topicIdUnsubscribe" placeholder="Topic ID"><br>
-        <input type="text" id="subscriberIdUnsubscribe" placeholder="Subscriber ID"><br>
-        <button onclick="unsubscribe()">Unsubscribe</button>
-        <p id="unsubscribeResponse"></p>
-    </div>
-    <hr>
- 
-    <h2>Notify</h2>
-    <div id="notify">
-        <input type="text" id="topicIdNotify" placeholder="Topic ID"><br>
-        <button onclick="notify()">Notify</button>
-        <p id="notifyResponse"></p>
-    </div>
-    <hr>
- 
-    <h2>Add Message</h2>
-    <div id="addMessage">
-        <input type="text" id="topicIdMessage" placeholder="Topic ID"><br>
-        <input type="text" id="message" placeholder="Message"><br>
-        <button onclick="addMessage()">Add Message</button>
-        <p id="addMessageResponse"></p>
-    </div>
-    <hr>
- 
-    <h2>Get All Messages</h2>
-    <div id="getAllMessages">
-        <input type="text" id="getAllMessagesSubscriberId" placeholder="Subscriber ID"><br>
-        <button onclick="getAllMessages()">Get All Messages</button>
-        <p id="getAllMessagesResponse"></p>
-    </div>
-    <hr>
- 
-    <h2>Get Messages For Topic</h2>
-    <div id="getMessagesForTopic">
-        <input type="text" id="getMessagesForTopicSubscriberId" placeholder="Subscriber ID"><br>
-        <input type="text" id="getMessagesForTopicTopicId" placeholder="Topic ID"><br>
-        <button onclick="getMessagesForTopic()">Get Messages For Topic</button>
-        <p id="getMessagesForTopicResponse"></p>
-    </div>
-    <hr>
 
     <div id="output"></div>
 
