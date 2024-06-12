@@ -156,4 +156,4 @@ To test the functionality of the API endpoints, you can run the provided test sc
 This will execute a series of test cases to ensure that the application functions as expected.
 
 ```bash
-npm test
+node driver.js
