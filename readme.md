@@ -2,6 +2,10 @@
 
 The Publisher Subscriber Notification System is a Node.js application that allows publishers to send notifications to subscribers who are interested in specific topics. It provides APIs for subscribing to topics, unsubscribing from topics, and notifying subscribers about updates by sending mails, adding and deleting subscribers, adding new messages to topic, getting all messages for users topics, getting specific topics messages.
 
+
+Created frontend page for testing purpose check it on 
+- **URL:** `https://publisher-subscriber.onrender.com`
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -121,6 +125,7 @@ The server will start running at http://localhost:3000
     "message": "your_message"
 }
 - **Description:** Add a message in the given topic and all its subscribers will get notified using mail
+- **Note:** Test this on deployed website because in local server it will not send mail due to early timeout. Other functionality will work just fine
 
 
 #### Get all Messages
@@ -151,6 +156,8 @@ The server will start running at http://localhost:3000
 ## Testing
 
 System is also deployed at URL: - **URL:** `https://publisher-subscriber.onrender.com`
+Postman Collection URL: - **URL:** `https://www.postman.com/payload-geologist-55468673/workspace/dev-dynamics/collection/36257386-79333d07-d251-4366-be4b-f62ac4eec317?action=share&creator=36257386`
+
 To test the functionality of the API endpoints, you can run the provided test script:
 
 This will execute a series of test cases to ensure that the application functions as expected.
