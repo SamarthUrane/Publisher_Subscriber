@@ -1,6 +1,6 @@
 # Publisher Subscriber Notification System
 
-The Publisher Subscriber Notification System is a Node.js application that allows publishers to send notifications to subscribers who are interested in specific topics. It provides APIs for subscribing to topics, unsubscribing from topics, and notifying subscribers about updates by sending mails, adding and deleting subscribers.
+The Publisher Subscriber Notification System is a Node.js application that allows publishers to send notifications to subscribers who are interested in specific topics. It provides APIs for subscribing to topics, unsubscribing from topics, and notifying subscribers about updates by sending mails, adding and deleting subscribers, adding new messages to topic, getting all messages for users topics, getting specific topics messages.
 
 ## Table of Contents
 
@@ -109,11 +109,48 @@ The server will start running at http://localhost:3000
         "subscriberId": "subscriber_id"
     }
 - **Description:** Delete a subscriber from the system.
+
+#### Add Message to topic
+
+- **URL:** `/addMessage`
+- **Method:** POST
+- **Request Body:**
+  ```json
+    {
+    "topicId": "topicId",
+    "message": "your_message"
+}
+- **Description:** Add a message in the given topic
+
+
+#### Get all Messages
+
+- **URL:** `/getAllMessages`
+- **Method:** POST
+- **Request Body:**
+  ```json
+    {
+        "subscriberId": "subscriber_id"
+    }
+- **Description:** Gets all messages for given user in topic wise manner.
+
+#### Get messages from specific topic
+
+- **URL:** `/getMessagesForTopic`
+- **Method:** POST
+- **Request Body:**
+  ```json
+    {
+        "subscriberId": "subscriber_id",
+        "topicId":"topic_ID"
+    }
+- **Description:** Gets specific topic messages for given user 
  
  
 
 ## Testing
 
+System is also deployed at URL: - **URL:** `https://publisher-subscriber.onrender.com`
 To test the functionality of the API endpoints, you can run the provided test script:
 
 This will execute a series of test cases to ensure that the application functions as expected.
