@@ -25,6 +25,10 @@ const loadData = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 const saveData = (filePath, data) => fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
 
 
+app.get('/', (req, res) => {
+    res.render(path.join(__dirname, 'index.ejs'));
+});
+
 app.post('/subscribe', (req, res) => {
     const { topicId, subscriberId } = req.body;
     const topics = loadData(topicsPath);
@@ -153,7 +157,7 @@ app.post('/addMessage', async (req, res) => {
 });
 
 
-app.post('/getAllMessages', (req, res) => {
+app.post('/getAllMessages', (req, res) => { 
     const { subscriberId } = req.body;
     const topics = loadData(topicsPath);
     const messages = loadData(messagePath);

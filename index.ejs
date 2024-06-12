@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publisher Subscriber Frontend</title>
+</head>
+
+<body>
+    <h1>Publisher Subscriber Frontend</h1>
+ 
+    <h2>Add Subscriber</h2>
+    <div id="addSubscriber">
+        <input type="text" id="subscriberId" placeholder="Subscriber ID"><br>
+        <input type="text" id="name" placeholder="Name"><br>
+        <input type="text" id="email" placeholder="Email"><br>
+        <button onclick="addSubscriber()">Add Subscriber</button>
+        <p id="addSubscriberResponse"></p>
+    </div>
+    <hr>
+ 
+    <h2>Delete Subscriber</h2>
+    <div id="deleteSubscriber">
+        <input type="text" id="deleteSubscriberId" plac eholder="Subscriber ID"><br>
+        <button onclick="deleteSubscriber()">Delete Subscriber</button>
+        <p id="deleteSubscriberResponse"></p>
+    </div>
+    <hr>
+ 
+    <h2>Subscribe</h2>
+    <div id="subscribe">
+        <input type="text" id="topicIdSubscribe" placeholder="Topic ID"><br>
+        <input type="text" id="subscriberIdSubscribe" placeholder="Subscriber ID"><br>
+        <button onclick="subscribe()">Subscribe</button>
+        <p id="subscribeResponse"></p>
+    </div>
+    <hr>
+ 
+    <h2>Unsubscribe</h2>
+    <div id="unsubscribe">
+        <input type="text" id="topicIdUnsubscribe" placeholder="Topic ID"><br>
+        <input type="text" id="subscriberIdUnsubscribe" placeholder="Subscriber ID"><br>
+        <button onclick="unsubscribe()">Unsubscribe</button>
+        <p id="unsubscribeResponse"></p>
+    </div>
+    <hr>
+ 
+    <h2>Notify</h2>
+    <div id="notify">
+        <input type="text" id="topicIdNotify" placeholder="Topic ID"><br>
+        <button onclick="notify()">Notify</button>
+        <p id="notifyResponse"></p>
+    </div>
+    <hr>
+ 
+    <h2>Add Message</h2>
+    <div id="addMessage">
+        <input type="text" id="topicIdMessage" placeholder="Topic ID"><br>
+        <input type="text" id="message" placeholder="Message"><br>
+        <button onclick="addMessage()">Add Message</button>
+        <p id="addMessageResponse"></p>
+    </div>
+    <hr>
+ 
+    <h2>Get All Messages</h2>
+    <div id="getAllMessages">
+        <input type="text" id="getAllMessagesSubscriberId" placeholder="Subscriber ID"><br>
+        <button onclick="getAllMessages()">Get All Messages</button>
+        <p id="getAllMessagesResponse"></p>
+    </div>
+    <hr>
+ 
+    <h2>Get Messages For Topic</h2>
+    <div id="getMessagesForTopic">
+        <input type="text" id="getMessagesForTopicSubscriberId" placeholder="Subscriber ID"><br>
+        <input type="text" id="getMessagesForTopicTopicId" placeholder="Topic ID"><br>
+        <button onclick="getMessagesForTopic()">Get Messages For Topic</button>
+        <p id="getMessagesForTopicResponse"></p>
+    </div>
+    <hr>
+
+    <div id="output"></div>
+
+    <script>
+        async function addSubscriber() {
+            try {
+                const subscriberId = document.getElementById('subscriberId').value;
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+
+                const response = await fetch('/addSubscriber', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ subscriberId, name, email })
+                });
+
+                const result = await response.json();
+                document.getElementById('addSubscriberResponse').innerText = JSON.stringify(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function deleteSubscriber() {
+            try {
+                const subscriberId = document.getElementById('deleteSubscriberId').value;
+
+                const response = await fetch('/deleteSubscriber', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ subscriberId })
+                });
+
+                const result = await response.json();
+                document.getElementById('deleteSubscriberResponse').innerText = JSON.stringify(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function subscribe() {
+            try {
+                const topicId = document.getElementById('topicIdSubscribe').value;
+                const subscriberId = document.getElementById('subscriberIdSubscribe').value;
+
+                const response = await fetch('/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ topicId, subscriberId })
+                });
+
+                const result = await response.json();
+                document.getElementById('subscribeResponse').innerText = JSON.stringify(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function unsubscribe() {
+            try {
+                const topicId = document.getElementById('topicIdUnsubscribe').value;
+                const subscriberId = document.getElementById('subscriberIdUnsubscribe').value;
+
+                const response = await fetch('/unsubscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ topicId, subscriberId })
+                });
+
+                const result = await response.json();
+                document.getElementById('unsubscribeResponse').innerText = JSON.stringify(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function notify() {
+            try {
+                const topicId = document.getElementById('topicIdNotify').value;
+
+                const response = await fetch('/notify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ topicId })
+                });
+
+                const result = await response.json();
+                document.getElementById('notifyResponse').innerText = JSON.stringify(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function addMessage() {
+            try {
+                const topicId = document.getElementById('topicIdMessage').value;
+                const message = document.getElementById('message').value;
+
+                const response = await fetch('/addMessage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ topicId, message })
+                });
+
+                const result = await response.json();
+                document.getElementById('addMessageResponse').innerText = JSON.stringify(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function getAllMessages() {
+            try {
+                const subscriberId = document.getElementById('getAllMessagesSubscriberId').value;
+
+                const response = await fetch('/getAllMessages', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ subscriberId })
+                });
+
+                const result = await response.json();
+                document.getElementById('getAllMessagesResponse').innerText = JSON.stringify(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function getMessagesForTopic() {
+            try {
+                const subscriberId = document.getElementById('getMessagesForTopicSubscriberId').value;
+                const topicId = document.getElementById('getMessagesForTopicTopicId').value;
+
+                const response = await fetch('/getMessagesForTopic', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ subscriberId, topicId })
+                });
+
+                const result = await response.json();
+                document.getElementById('getMessagesForTopicResponse').innerText = JSON.stringify(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+
+</html>

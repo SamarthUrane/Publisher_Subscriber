@@ -1,7 +1,8 @@
 {
   "news": [
     "BJP Won the Election for 2024",
-    "This is demo message"
+    "This is demo message",
+    "Demo message from frontend for news"
   ],
   "technology": [
     "This is new technology",
