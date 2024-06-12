@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 
 
 const sendMail = async (emails, topicId) => {
-    console.log("HELRE")
+    // console.log(emails)
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: emails,
@@ -24,6 +24,8 @@ const sendMail = async (emails, topicId) => {
         text: `Dear Subscriber,
         
 We hope this message finds you well. We are excited to bring you the latest updates on your subscribed topic: ${topicId}.
+
+New message is waiting for you!!!
         
 Stay tuned for more information and insights on ${topicId} that we believe you'll find valuable and engaging.
         
@@ -34,13 +36,13 @@ The Notification Team`
     };
 
     try {
-        console.log("IN TRY")
+        // console.log("IN TRY")
         const info = await transporter.sendMail(mailOptions);
-        console.log("SUCCESS")
+        // console.log("SUCCESS")
         console.log(info)
         return info;
     } catch (error) {
-        console.log("ERROR")
+        // console.log("ERROR")
         console.log(error)
         throw error;
     }

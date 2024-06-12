@@ -120,7 +120,7 @@ The server will start running at http://localhost:3000
     "topicId": "topicId",
     "message": "your_message"
 }
-- **Description:** Add a message in the given topic
+- **Description:** Add a message in the given topic and all its subscribers will get notified using mail
 
 
 #### Get all Messages

@@ -33,6 +33,33 @@ async function testNotify(topicId) {
     }
 }
 
+async function testAddMessage(topicId, message) {
+    try {
+        const response = await axios.post(`${baseURL}/addMessage`, { topicId, message });
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error adding message:', error.response ? error.response.data : error.message);
+    }
+}
+
+async function testGetAllMessages(subscriberId) {
+    try {
+        const response = await axios.post(`${baseURL}/getAllMessages`, { subscriberId });
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error getting all messages:', error.response ? error.response.data : error.message);
+    }
+}
+
+async function testGetMessagesForTopic(subscriberId, topicId) {
+    try {
+        const response = await axios.post(`${baseURL}/getMessagesForTopic`, { subscriberId, topicId });
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error getting messages for topic:', error.response ? error.response.data : error.message);
+    }
+}
+
 
 async function runTests() {
     await testSubscribe('user1', 'technology');
@@ -41,7 +68,12 @@ async function runTests() {
 
     await testUnsubscribe('user1', 'technology');
 
-    await testNotify('news');
+    await testNotify('news'); 
+        await testAddMessage('technology', 'New article on technology.');
+ 
+        await testGetAllMessages('user2');
+     
+        await testGetMessagesForTopic('user2', 'technology');
 }
 
 runTests();
